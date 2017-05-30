@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block site %}
+{% endblock %}
+
+{% block main %}
+<!-- content start -->
+<div class="panel panel-default">
+	<div class="topic-heading panel-heading">
+		<div class="row">
+			<a href="#" class="col-md-1 pull-right"><img title="eric" class="avatar-middle pull-right" src="/media/{{ article.author.photo }}"></a>
+			<div class="col-md-10">
+				<p class="topic-breadcrumb">
+                    <a href="/">V8EX</a>&nbsp;&nbsp; > &nbsp;&nbsp;
+                    <a href="/category/{{ article.category_id_id }}">{{ article.category_id }}</a>
+                </p>
+				<h3 class="list-post-title-in-topic">{{ article.title }}</h3>
+				<p class="list-meta">
+					<span class="label label-default list-meta-node">
+                        <a href="/category/{{ article.category_id_id }}">{{ article.category_id }}</a>
+                    </span>
+					<span class="list-count">{{ view_count }}次点击</span>
+					<span class="list-time">{{ article.created_date }}</span>
+					<span class="list-username"><a href="#">{{ article.author }}</a></span>
+
+
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="panel-body">{{ article.content }}</div>
+</div>
+<!-- content end -->
+
+<!-- comment start -->
+{% if comments.count == 0 %}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<p class="panel-title">评论</p>
+	</div>
+	<div class="panel-body">
+		<div class="alert alert-info">暂无回复</div>
+	</div>
+</div>
+
+{% else %}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<p class="panel-title">{{ comments.count }} 回复</p>
+	</div>
+	<ul class="list-group">
+        {% for comment in comments %}
+		<div class="list-group-item list-topic-item" id="post-23">
+			<div class="row ">
+				<a href="#" class="col-md-1">
+                    <img title="SIFT2009" class="avatar-middle" src="/media/{{ comment.user_id.photo }}">
+                </a>
+				<div class="col-xs-11">
+					<div class="row">
+						<div class="reply-author col-sm-10">
+							<a href="#">{{ comment.user_id }}</a>
+							<span class="list-time">{{ comment.date }}</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="reply-content col-md-12">
+                            <p>{{ comment.content }}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    {% endfor %}
+	</ul>
+</div>
+<!-- comment start -->
+{% endif %}
+
+{% if user %}
+<div class="panel panel-default" id="create_reply">
+	<div class="panel-heading">
+		<p class="panel-title">回复</p>
+	</div>
+	<div class="panel-body">
+		<form class="form" action="/reply/{{ article.id }}" method="post">
+			<div class="form-group ">
+				<label class="sr-only" for="content">内容</label>
+				<textarea class="form-control" id="content" name="content" style="margin: 0px -2px 0px 0px; height: 139px; width: 718px;"></textarea>
+			</div>
+			<div class="form-submit text-right">
+{#				<a class="btn btn-default" id="pre-btn"> 预览 </a>#}
+				<button class="btn btn-info" type="submit" id="submit">
+					提交(Submit)
+				</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+{% else %}
+
+{# 未登陆时提示登陆才可以回复 #}
+<div class="panel panel-default" id="create_reply">
+	<div class="panel-heading">
+		<p class="panel-title">回复</p>
+	</div>
+	<div class="panel-body">
+		<div class="alert alert-info">登录后方可回复</div>
+		<a href="/login/" class="btn btn-info">登陆</a>
+	</div>
+</div>
+
+{% endif %}
+{% endblock %}

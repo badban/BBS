@@ -1,0 +1,36 @@
+{% extends 'detail.html' %}
+
+{% block main %}
+<div class="panel panel-default">
+    <div class="panel-heading title-breadcrumb">
+        <a href="/" style="color: #777;">主页</a> <span style="color: #777;">节点</span>
+	</div>
+    {% for article in articles reversed %}
+
+	<ul class="list-group">
+        <div class="list-group-item list-topic-item" id="{{ article.id }}" style="border-bottom: 1px solid #ddd; border-top: 1px solid #ddd">
+			<div class="row ">
+				<a href="#" class="col-md-1 col-xs-2 col-sm-2"><img title="mayer1" class="avatar-middle" src="http://7xkus6.com1.z0.glb.clouddn.com/index.jpg"></a>
+				<div class="col-xs-9 col-md-10 col-sm-9">
+					<h3 class="list-post-title" style="margin-bottom: 5px">
+                        <a href="/detail/{{ article.id }}">{{ article.title }}</a>
+                    </h3>
+					<p class="list-meta">
+						<span class="label label-default list-meta-node">
+                            <a href="/category/{{ article.category_id_id }}">{{ article.category_id }}</a>
+                        </span>
+						<span class="list-count">{{ article.view_count }}次点击</span>
+						<span class="list-time">{{ article.created_date }}</span>
+						<span class="list-username"><a href="#">{{ article.author }}</a></span>
+						<span class="list-reply-count-xs visible-xs"></span>
+					</p>
+				</div>
+				<div class="col-xs-1 col-sm-1">
+					<span class="badge pull-right list-reply-count hidden-xs">{{ article.comment_set.count }}</span>
+				</div>
+			</div>
+		</div>
+        {% endfor %}
+	</ul>
+</div>
+{% endblock %}

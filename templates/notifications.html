@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block site %}
+{% endblock %}
+
+{% block main %}
+
+
+ <div class="panel panel-default">
+	<div class="panel-heading title-breadcrumb">
+        消息系统
+	</div>
+    {% if comments.count == 0 %}
+	<div class="panel-body">
+		<div class="alert alert-info">暂无消息</div>
+	</div>
+    {% else %}
+	<ul class="list-group">
+        {% for comment in comments reversed %}
+            <div class="list-group-item list-topic-item">
+                <a href="#"><img src="/media/{{ comment.user_id.photo }}" alt="" style="width: 30px; height: 30px;"></a>
+                <p style="display: inline-block;">
+                    <a href="#" style="color: #778087;"><strong>{{ comment.user_id }}</strong></a>
+                    在 <a href="/detail/{{ comment.article_id_id }}" style="color: #778087;">{{ comment.article_id }}</a>里回复了你 &nbsp;&nbsp;&nbsp;{{ comment.date|date:"Y-m-d" }}
+                </p>
+                <br>
+                <div style="background-color: #f5f5f5; padding: 5px 10px 5px 10px; display: inline-block;  margin-left: 35px;">{{ comment }}</div>
+            </div>
+            {% endfor %}
+        </ul>
+	<div class="panel-footer">
+
+	</div>
+    {% endif %}
+</div>
+{% endblock %}

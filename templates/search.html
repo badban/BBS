@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block site %}{% endblock %}
+
+{% block main %}
+
+{% if articles %}
+
+<div class="panel panel-default">
+    <div class="panel-heading title-breadcrumb">搜索 {{ ketword }} 的结果</div>
+        <ul class="list-group">
+        {% for article in articles reversed %}
+            <div class="list-group-item list-topic-item" id="{{ article.id }}">
+                <div class="row ">
+                    <a href="/detail/{{ article.id }}" class="col-md-1 col-xs-2 col-sm-2">
+                        <img title="mayer1" class="avatar-middle" src="http://7xkus6.com1.z0.glb.clouddn.com/index.jpg">
+                    </a>
+                    <div class="col-xs-9 col-md-10 col-sm-9">
+                        <h3 class="list-post-title" style="margin-bottom: 5px">
+                            <a href="/detail/{{ article.id }}">{{ article.title }}</a>
+                        </h3>
+                        <p class="list-meta">
+                            <span class="label label-default list-meta-node">
+                                <a href="/category/{{ article.category_id_id }}">{{ article.category_id }}</a>
+                            </span>
+                            <span class="list-count">{{ article.view_count }}次点击</span>
+                            <span class="list-time">{{ article.created_date }}</span>
+                            <span class="list-username">
+                                <a href="#">{{ article.author }}</a>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col-xs-1 col-sm-1">
+                        <span class="badge pull-right list-reply-count hidden-xs">{{ article.comment_set.count }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </ul>
+    </div>
+
+    {% else %}
+
+    <div class="panel panel-default">
+        <div class="panel-heading title-breadcrumb">搜索 {{ ketword }} 的结果</div>
+        <div class="panel-body">
+            <div class="alert alert-danger">抱歉，没有找到你想要的内容</div>
+        </div>
+    </div>
+
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'detail.html' %}
+
+{% block main %}
+<div class="panel panel-default">
+    <div class="panel-body row">
+        <div class="col-xs-2">
+            <img class="avatar-large" src="/media/{{ user.photo }}" title="jolson"/>
+        </div>
+        <div class="col-xs-10">
+            <p class="list-post-title"><strong>{{ user }}</strong></p>
+            <p class="list-meta">#{{ user.id }} @ 1 周之前</p>
+        </div>
+    </div>
+</div>
+
+{% if articles %}
+<div class="panel panel-default">
+	<div class="panel-heading title-breadcrumb">
+        {{ user.username }} &nbsp; 的话题
+	</div>
+	<ul class="list-group">
+        {% for article in articles reversed %}
+            <div class="list-group-item list-topic-item" id="{{ article.id }}">
+                <div class="row ">
+                    <a href="/detail/{{ article.id }}" class="col-md-1 col-xs-2 col-sm-2">
+                        <img title="mayer1" class="avatar-middle" src="/media/{{ user.photo }}">
+                    </a>
+                    <div class="col-xs-9 col-md-10 col-sm-9">
+                        <h3 class="list-post-title" style="margin-bottom: 5px">
+                            <a href="/detail/{{ article.id }}">{{ article.title }}</a>
+                        </h3>
+                        <p class="list-meta">
+                            <span class="label label-default list-meta-node">
+                                <a href="/category/{{ article.category_id_id }}">{{ article.category_id }}</a>
+                            </span>
+                            <span class="list-count">{{ article.view_count }}次点击</span>
+                            <span class="list-time">{{ article.created_date }}</span>
+                            <span class="list-username">
+                                <a href="#">{{ article.author }}</a>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col-xs-1 col-sm-1">
+                        <span class="badge pull-right list-reply-count hidden-xs">{{ article.comment_set.count }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </ul>
+	<div class="panel-footer">
+
+	</div>
+</div>
+{% else %}
+<div class="panel panel-default">
+	<div class="panel-heading title-breadcrumb">{{ user.username }}的话题</div>
+	<div class="panel-body">
+		<div class="alert alert-info">
+			抱歉，该用户暂时没有发布主题
+		</div>
+	</div>
+</div>
+
+{% endif %}
+{% endblock %}

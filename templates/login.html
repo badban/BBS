@@ -1,0 +1,29 @@
+{% extends 'base_center.html' %}
+
+{% block main %}
+<div id="wrap">
+    <div class="container" id="main">
+        <div class="row">
+            <div class="panel panel-default col-md-6 col-md-offset-3">
+            <form id="login-check" class="panel-body" role="form" method="post" action="/login/">
+                {% csrf_token %}
+                <h2>登陆</h2>
+                <div class="form-group ">
+                    <label for="username">用户名</label>
+                    <input class="form-control" id="username" name="username" placeholder="" type="text">
+                </div>
+                <div class="form-group ">
+                    <label for="password">密码</label>
+                    <input class="form-control" id="password" name="password" type="password">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default">登陆</button>
+                    <a class="btn btn-link" href="/reg/">注册？</a>
+                    <a class="btn btn-link" href="#">忘记密码？</a>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
