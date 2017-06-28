@@ -7,16 +7,40 @@
         <span>新话题</span>
     </div>
     <div class="panel-body">
-        <form class="form" action="/post/" method="post">
-            <select class="form-control" name="category">
+        <form class="form" action="/post/" method="post" enctype="multipart/form-data">
+            <select id="category" class="form-control" name="category" onchange="changePage();">
                 {% for category in categories %}
-                    <option value="{{ category.id }}">{{ category.name }}</option>
+                    <option value="{{ category.id}}">{{ category.name}}</option>
                 {% endfor %}
             </select>
             <br>
             <div class="form-group ">
                 <label class="sr-only" for="title">标题</label>
                 <input placeholder="标题" type="text" class="form-control" id="title" name="title" />
+            </div>
+           <div id="recent_event_date" class="form-group " style="display: none">
+                <label class="sr-only" for="date">活动日期</label>
+                <input placeholder="日期" type="text" class="form-control" id="recent_event_date" name="recent_event_date" />
+            </div>
+           <div id="event_leader" class="form-group " style="display: none">
+                <label class="sr-only" for="date">活动发起人</label>
+                <input placeholder="活动发起人" type="text" class="form-control" id="event_leader" name="event_leader" />
+            </div>
+            <div id="location" class="form-group " style="display: none">
+                <label class="sr-only" for="date">地点</label>
+                <input placeholder="地点" type="text" class="form-control" id="location" name="location" />
+            </div>
+            <div id="ebook_abstract" class="form-group " style="display: none">
+                <label class="sr-only" for="date">摘要</label>
+                <input placeholder="摘要" type="text" class="form-control" id="ebook_abstract" name="ebook_abstract" />
+            </div>
+            <div id="ebook_author" class="form-group " style="display: none">
+                <label class="sr-only" for="date">作者</label>
+                <input placeholder="作者" type="text" class="form-control" id="ebook_author" name="ebook_author" />
+            </div>
+            <div id="ebook_isbn" class="form-group " style="display: none">
+                <label class="sr-only" for="date">期刊号</label>
+                <input placeholder="期刊号" type="text" class="form-control" id="ebook_isbn" name="ebook_isbn" />
             </div>
             <div class="form-group ">
                 <label class="sr-only" for="content">内容</label>
@@ -25,7 +49,13 @@
             <div class="form-submit text-right">
                 <button class="btn btn-info" type="submit" id="submit">提交(Submit)</button>
             </div>
+           <div class="form-group ">
+                <label class="sr-only" for="content">图片</label>
+                <input type="file" name="img" id="img" multiple="multiple">
+                <!--<button type="submit">上传</button>-->
+            </div>
         </form>
+
     </div>
 </div>
 {% endblock %}

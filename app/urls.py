@@ -32,4 +32,7 @@ urlpatterns = [
     url(r'^category/(\d+)$', views.node),
     url(r'^search/(?P<keyword>.*)/$', views.search),
     url(r'^notifications/$', views.notifications),
+    url(r'^introduction/$',views.introduction),
+    url(r'^connection/$',views.connection),
+    url(r'^download/$',views.server),
 ]

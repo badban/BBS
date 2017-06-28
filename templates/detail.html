@@ -29,9 +29,73 @@
 		</div>
 	</div>
 	<div class="panel-body">{{ article.content }}</div>
+
+    <!-- img start -->
+    {%if article.imgnames.count != 0%}
+    {%for img in article.imgnames %}
+        <img src="/media/upload/{{ img  }}" width="200" />
+    {% endfor %}
+    {% endif %}
+    <!-- img end -->
+
 </div>
 <!-- content end -->
-
+<!-- recent event start -->
+{% if article.category_id_id == 2 %}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<p class="panel-title">活动日期</p>
+	</div>
+	<div class="panel-body">{{ article.recent_event_date }}</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<p class="panel-title">活动发起人</p>
+	</div>
+	<div class="panel-body">{{ article.event_leader }}</div>
+</div>
+{% endif %}
+<!-- recent event end -->
+<!-- family book start -->
+{% if article.category_id_id == 3 %}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<p class="panel-title">地点</p>
+	</div>
+	<div class="panel-body">{{ article.location }}</div>
+</div>
+{% endif %}
+<!-- family book end -->
+<!-- ebook start -->
+{% if article.category_id_id == 4 %}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<p class="panel-title">摘要</p>
+	</div>
+	<div class="panel-body">{{ article.ebook_abstract }}</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<p class="panel-title">作者</p>
+	</div>
+	<div class="panel-body">{{ article.ebook_author }}</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<p class="panel-title">期刊号</p>
+	</div>
+	<div class="panel-body">{{ article.ebook_isbn }}</div>
+</div>
+{% endif %}
+<!-- ebook end -->
+<!-- download start-->
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<p class="panel-title">去下载</p>
+	</div>
+	<a href="/download?filenamelist={{ article.allfilenames}}">下载文件</a>
+</div>
+<!-- download end-->
 <!-- comment start -->
 {% if comments.count == 0 %}
 <div class="panel panel-default">

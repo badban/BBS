@@ -1,0 +1,20 @@
+
+
+<div class="block span6">
+    <p class="block-heading ">file download model</p>
+    <div class="block-body">
+        <form action="" method="post">{% csrf_token %}
+        {% if filenamelist.count == 0 %}
+        <p>no files</p>
+        {% endif %}
+        {% if filenamelist.count != 0 %}
+            {% for filename in filenamelist%}
+                 <p>{{ filename }}</p>
+                 <button type="submit" name="s_thread" id = "s_thread" class="btn btn-primary " value="{{ filename }}">下载文件</button>
+            {% endfor %}
+        {% endif %}
+        </form>
+
+
+    </div>
+</div>

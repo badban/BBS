@@ -3,7 +3,7 @@
 <head>
     <meta charset=UTF-8">
     <meta name="viewport" content="width=360, initial-scale=0.75 user-scalable=no">
-    <title>W2EX</title>
+    <title>中华蒲氏文化研究会</title>
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/css/base.css" rel="stylesheet">
 </head>
@@ -133,7 +133,7 @@
                             </a>
                             <div class="padtop">
                                 <div class="col-xs-3">
-                                    <a href="/post/" class="btn btn-block"> <span class="glyphicon glyphicon-plus"></span> 新主题 </a>
+                                    <a href="/post/" class="btn btn-block"> <span class="glyphicon glyphicon-plus"></span> 发布 </a>
                                 </div>
                                 <div class="col-xs-3">
                                     <a href="/user/" class="btn btn-block"><span class="glyphicon glyphicon-user"></span> 个人信息 </a>
@@ -173,7 +173,7 @@
                 {% block category %}
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">节点</h3>
+                        <h3 class="panel-title">精华主题</h3>
                     </div>
                     <div class="panel-body">
                     {% for category in categories %}
@@ -192,9 +192,7 @@
                     </div>
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <span class="label label-default list-meta-node"><a href="http://stackoverflow.com/">stackoverflow</a></span>
-                            <span class="label label-default list-meta-node"><a href="http://www.v2ex.com/">V2EX</a></span>
-                            <span class="label label-default list-meta-node"><a href="https://github.com/">GitHub</a></span>
+                            <span class="label label-default list-meta-node"><a href="/introduction/">研究会概况</a></span>
                         </li>
                         <li class="list-group-item">
                             <a href="https://www.digitalocean.com/?refcode=f6bd9f21722d"><img src="http://7xkus6.com1.z0.glb.clouddn.com/DO.png" style="max-width:100%; display:block;"></a>
@@ -242,9 +240,9 @@
     </div>
 </footer>
 {% endblock %}
-
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="/static/js/search.js"></script>
+    <script src="/static/js/changepage.js"></script>
 </body>
 </html>

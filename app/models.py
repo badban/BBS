@@ -13,7 +13,15 @@ class BBS(models.Model):
     created_date = models.DateTimeField(verbose_name='发表时间')
     update_date = models.DateTimeField(verbose_name='最后修改时间')
     ranking = models.IntegerField(verbose_name='权重')
-
+    imgnames = models.CharField(max_length=512,blank=True,null=True)
+    allfilenames = models.CharField(max_length=512,blank=True,null=True)
+    #rencent_event_date 最近活动日期
+    recent_event_date = models.CharField(verbose_name='最近活动日期',max_length=512,blank=True,null=True)
+    event_leader = models.CharField(verbose_name='活动发起人',max_length=512,blank=True,null=True)
+    location = models.CharField(verbose_name='地点', max_length=512, blank=True, null=True)
+    ebook_abstract = models.CharField(verbose_name='电子期刊摘要', max_length=512, blank=True, null=True)
+    ebook_author = models.CharField(verbose_name='电子期刊作者', max_length=512, blank=True, null=True)
+    ebook_isbn = models.CharField(verbose_name='期刊号', max_length=512, blank=True, null=True)
     def __str__(self):
         return self.title
 
